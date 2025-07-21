@@ -63,7 +63,7 @@ export default function LandingPage() {
                   </a>
                   <a
                     className="social-btn pop-in"
-                    href="https://www.linkedin.com/in/goncalo-laureano/"
+                    href="https://www.linkedin.com/in/gon%C3%A7alo-laureano-a8b747340/"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"
