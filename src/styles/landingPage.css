@@ -82,6 +82,7 @@ body {
 .cta-button {
     background-color: #484FCC;
     color: white;
+    text-decoration: none;
     border: none;
     padding: 1.1rem 2.5rem;
     font-size: 1.5rem;

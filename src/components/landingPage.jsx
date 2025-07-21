@@ -35,7 +35,14 @@ export default function LandingPage() {
               <span className="highlight">{typedTitle.slice(0, highlightLength)}</span>{typedTitle.slice(highlightLength)}
               <span className="caret"></span>
             </div>
-            <button className="cta-button">See my work</button>
+            <a
+              className="cta-button"
+              href="https://github.com/goncalo-laureano"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              See my work
+            </a>
           </div>
           <div className="image-container">
             <img src={process.env.PUBLIC_URL + "/img/me.jpeg"} alt="Gonçalo Laureano" className="image"/>
