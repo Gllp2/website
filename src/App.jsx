@@ -12,6 +12,9 @@ function App() {
       <div className="snap-section">
         <Technologies />
       </div>
+      <div className="snap-section">
+        <UnderConstruction />
+      </div>
     </div>
   );
 }
