@@ -178,6 +178,9 @@ body {
     }
 }
 
+.desktop-socials { display: flex; }
+.mobile-socials { display: none; }
+
 @media (max-width: 900px) {
   .main-content {
     flex-direction: column;
@@ -272,4 +275,6 @@ body {
         justify-content: center;
         margin: 0;
     }
+    .desktop-socials { display: none; }
+    .mobile-socials { display: flex; }
 }
