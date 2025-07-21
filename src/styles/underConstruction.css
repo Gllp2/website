@@ -1,0 +1,28 @@
+body {
+  background-color: #000;
+}
+
+.under-construction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+.under-construction-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #ffff00;
+}
+
+p {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #ffaa00;
+}

@@ -1,9 +1,10 @@
 import './App.css';
+import UnderConstruction from './components/underConstruction';
 
 function App() {
   return (
     <>
-      <h1>Hello World</h1>
+      <UnderConstruction />
     </>
   );
 }
