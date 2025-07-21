@@ -41,10 +41,11 @@ export default function LandingPage() {
             </div>
             {showButton && (
               <>
+                {/* Desktop: all in one row */}
                 <div className="cta-row desktop-socials">
                   <a
                     className="cta-button fade-in"
-                    href="https://github.com/gllp2"
+                    href=""
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -71,27 +72,40 @@ export default function LandingPage() {
                     <FaLinkedin size={28} />
                   </a>
                 </div>
-                <div className="socials-row mobile-socials">
-                  <a
-                    className="social-btn pop-in"
-                    href="https://github.com/gllp2"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="GitHub"
-                    style={{ animationDelay: '0.3s' }}
-                  >
-                    <FaGithub size={28} />
-                  </a>
-                  <a
-                    className="social-btn pop-in"
-                    href="https://www.linkedin.com/in/goncalo-laureano/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn"
-                    style={{ animationDelay: '0.45s' }}
-                  >
-                    <FaLinkedin size={28} />
-                  </a>
+                {/* Mobile: button, then socials below */}
+                <div className="mobile-socials">
+                  <div className="cta-row">
+                    <a
+                      className="cta-button fade-in"
+                      href="https://github.com/gllp2"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      More About Me
+                    </a>
+                  </div>
+                  <div className="socials-row">
+                    <a
+                      className="social-btn pop-in"
+                      href="https://github.com/gllp2"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="GitHub"
+                      style={{ animationDelay: '0.3s' }}
+                    >
+                      <FaGithub size={28} />
+                    </a>
+                    <a
+                      className="social-btn pop-in"
+                      href="https://www.linkedin.com/in/goncalo-laureano/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="LinkedIn"
+                      style={{ animationDelay: '0.45s' }}
+                    >
+                      <FaLinkedin size={28} />
+                    </a>
+                  </div>
                 </div>
               </>
             )}
