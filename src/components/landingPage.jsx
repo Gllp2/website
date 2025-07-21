@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import '../styles/landingPage.css';
 
 export default function LandingPage() {
   const fullTitle = "Full Stack Web Developer";
   const highlightLength = 10; // 'Full Stack' length
   const [typedTitle, setTypedTitle] = useState("");
+  const [showButton, setShowButton] = useState(false);
   const speed = 50; // ms per character
 
   useEffect(() => {
@@ -16,6 +18,8 @@ export default function LandingPage() {
         setTypedTitle(fullTitle.slice(0, i));
         i++;
         timeoutId = setTimeout(typeWriter, speed);
+      } else {
+        setShowButton(true);
       }
     }
     typeWriter();
@@ -35,14 +39,38 @@ export default function LandingPage() {
               <span className="highlight">{typedTitle.slice(0, highlightLength)}</span>{typedTitle.slice(highlightLength)}
               <span className="caret"></span>
             </div>
-            <a
-              className="cta-button"
-              href="https://github.com/goncalo-laureano"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              See my work
-            </a>
+            {showButton && (
+              <div className="cta-row">
+                <a
+                  className="cta-button fade-in"
+                  href="https://github.com/gllp2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  More About Me
+                </a>
+                <a
+                  className="social-btn pop-in"
+                  href="https://github.com/gllp2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                  style={{ animationDelay: '0.3s' }}
+                >
+                  <FaGithub size={28} />
+                </a>
+                <a
+                  className="social-btn pop-in"
+                  href="https://www.linkedin.com/in/gon%C3%A7alo-laureano-a8b747340/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  style={{ animationDelay: '0.45s' }}
+                >
+                  <FaLinkedin size={28} />
+                </a>
+              </div>
+            )}
           </div>
           <div className="image-container">
             <img src={process.env.PUBLIC_URL + "/img/me.jpeg"} alt="Gonçalo Laureano" className="image"/>

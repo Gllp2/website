@@ -1,5 +1,5 @@
 body {
-    background-color: #232222;
+    background: linear-gradient(to bottom, #122651, #362d5e);
     font-family: 'Josefin Sans', sans-serif;
 }
 
@@ -80,21 +80,40 @@ body {
 }
 
 .cta-button {
-    background-color: #484FCC;
-    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(45, 45, 45, 0.3);
+    color: #fff;
+    font-weight: 700;
     text-decoration: none;
     border: none;
     padding: 1.1rem 2.5rem;
     font-size: 1.5rem;
-    border-radius: 6px;
+    border-radius: 2rem;
     cursor: pointer;
-    margin-top: 1.2rem;
-    margin-bottom: 0.7rem;
-    transition: background 0.2s;
+    margin-top: 0;
+    margin-bottom: 0;
+    transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+    box-shadow: 0 2px 12px 0 rgba(72, 79, 204, 0.10);
+    height: 3.4rem;
 }
 
 .cta-button:hover {
-    background-color: #363b99;
+    background: #00fff7;
+    color: #232222;
+    box-shadow: 0 4px 24px 0 rgba(72, 79, 204, 0.18);
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.7s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
 }
 
 .caret::after {
@@ -109,6 +128,54 @@ body {
 @keyframes blink {
     0%, 50% { opacity: 1; }
     51%, 100% { opacity: 0; }
+}
+
+.cta-row {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    margin-top: 1.2rem;
+    flex-wrap: wrap;
+    height: 3.4rem;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.4rem;
+    height: 3.4rem;
+    min-width: 3.4rem;
+    min-height: 3.4rem;
+    border-radius: 50%;
+    background: rgba(45, 45, 45, 0.3);
+    color: #fff;
+    border: none;
+    box-shadow: 0 2px 12px 0 rgba(72, 79, 204, 0.10);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+    text-decoration: none;
+    opacity: 0;
+    animation: popIn 0.5s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+.social-btn:hover {
+    background: #00fff7;
+    color: #232222;
+    box-shadow: 0 4px 24px 0 rgba(72, 79, 204, 0.18);
+    transform: scale(1.13);
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 @media (max-width: 900px) {
@@ -167,4 +234,19 @@ body {
     align-items: center;
     text-align: center;
   }
+}
+
+@media (max-width: 700px) {
+    .cta-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.7rem;
+    }
+    .social-btn {
+        width: 2.7rem;
+        height: 2.7rem;
+        min-width: 2.7rem;
+        min-height: 2.7rem;
+        font-size: 1.1rem;
+    }
 }
