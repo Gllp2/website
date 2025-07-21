@@ -6,21 +6,21 @@ import { FaRegQuestionCircle, FaJava } from 'react-icons/fa';
 import '../styles/technologies.css';
 
 const techStack = [
-  { icon: SiHtml5, color: '#E34F26' },
-  { icon: SiCss3, color: '#1572B6' },
-  { icon: SiJavascript, color: '#F7DF1E' },
-  { icon: SiTypescript, color: '#3178C6' },
-  { icon: SiNodedotjs, color: '#339933' },
-  { icon: SiReact, color: '#61DAFB' },
-  { icon: SiMongodb, color: '#47A248' },
-  { icon: SiSqlite, color: '#003B57' },
-  { icon: SiFigma, color: '#F24E1E' },
-  { icon: SiCanva, color: '#00C4CC' },
-  { icon: SiGithub, color: '#181717' },
-  { icon: SiGit, color: '#F05032' },
-  { icon: SiTailwindcss, color: '#06B6D4' },
-  { icon: SiCplusplus, color: '#00599C' },
-  { icon: FaJava, color: '#007396' },
+  { name: 'HTML5', icon: SiHtml5, color: '#E34F26' },
+  { name: 'CSS3', icon: SiCss3, color: '#1572B6' },
+  { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
+  { name: 'TypeScript', icon: SiTypescript, color: '#1C9CD7' },
+  { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
+  { name: 'React', icon: SiReact, color: '#61DAFB' },
+  { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
+  { name: 'SQLite', icon: SiSqlite, color: '#4DB6E2' },
+  { name: 'Figma', icon: SiFigma, color: '#F24E1E' },
+  { name: 'Canva', icon: SiCanva, color: '#00C4CC' },
+  { name: 'GitHub', icon: SiGithub, color: '#181717' },
+  { name: 'Git', icon: SiGit, color: '#F05032' },
+  { name: 'Tailwind', icon: SiTailwindcss, color: '#06B6D4' },
+  { name: 'C++', icon: SiCplusplus, color: '#00599C' },
+  { name: 'Java', icon: FaJava, color: '#007396' },
 ];
 
 export default function Technologies() {
@@ -62,7 +62,6 @@ export default function Technologies() {
               key={tech.name}
             >
               <Icon size={56} color={tech.color} className="tech-icon" />
-              <span className="tech-label">{tech.name}</span>
             </div>
           );
         })}
