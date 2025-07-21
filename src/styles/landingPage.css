@@ -1,0 +1,111 @@
+body {
+    background-color: #232222;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 0 auto;
+}
+
+
+.subhead-upper-title {
+    font-size: 2.25rem;
+    font-weight: 400;
+    color: white;
+}
+
+.title {
+    font-size: 5.5rem;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.highlight {
+    background: linear-gradient(90deg, #00fff7 0%, #484FCC 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    text-shadow:
+        0 2px 24px rgba(0,255,247,0.18),
+        0 1px 2px rgba(72,79,204,0.12);
+    letter-spacing: 0.03em;
+    background-clip: text;
+    color: transparent;
+    font-size: 5.5rem;
+    font-weight: 700;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    max-width: 350px;
+    height: auto;
+    border-radius: 100%;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 32px 0 rgba(72, 79, 204, 0.25), 0 1.5px 8px 0 rgba(0,0,0,0.18);
+}
+
+.image:hover {
+    transform: scale(1.08);
+    box-shadow: 0 16px 48px 0 rgba(72, 79, 204, 0.35), 0 3px 16px 0 rgba(0,0,0,0.22);
+}
+
+.cta-button {
+    background-color: #484FCC;
+    color: white;
+    border: none;
+    padding: 1.1rem 2.5rem;
+    font-size: 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 1.2rem;
+    margin-bottom: 0.7rem;
+    transition: background 0.2s;
+}
+
+.cta-button:hover {
+    background-color: #363b99;
+}
+
+.caret::after {
+    content: '|';
+    color: white;
+    font-weight: 700;
+    font-size: inherit;
+    vertical-align: baseline;
+    animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}

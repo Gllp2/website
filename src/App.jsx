@@ -1,10 +1,12 @@
 import './App.css';
 import UnderConstruction from './components/underConstruction';
+import LandingPage from './components/landingPage';
+
 
 function App() {
   return (
     <>
-      <UnderConstruction />
+      <LandingPage />
     </>
   );
 }
