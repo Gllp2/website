@@ -4,10 +4,10 @@ import '../styles/landingPage.css';
 
 export default function LandingPage() {
   const fullTitle = "Full Stack Web Developer";
-  const highlightLength = 10; // 'Full Stack' length
+  const highlightLength = 10;
   const [typedTitle, setTypedTitle] = useState("");
   const [showButton, setShowButton] = useState(false);
-  const speed = 50; // ms per character
+  const speed = 50;
 
   useEffect(() => {
     let i = 0;
@@ -24,7 +24,7 @@ export default function LandingPage() {
     }
     typeWriter();
 
-    return () => clearTimeout(timeoutId); // cleanup on unmount
+    return () => clearTimeout(timeoutId);
   }, []);
 
   return (
@@ -40,36 +40,60 @@ export default function LandingPage() {
               <span className="caret"></span>
             </div>
             {showButton && (
-              <div className="cta-row">
-                <a
-                  className="cta-button fade-in"
-                  href="https://github.com/gllp2"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  More About Me
-                </a>
-                <a
-                  className="social-btn pop-in"
-                  href="https://github.com/gllp2"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
-                  style={{ animationDelay: '0.3s' }}
-                >
-                  <FaGithub size={28} />
-                </a>
-                <a
-                  className="social-btn pop-in"
-                  href="https://www.linkedin.com/in/gon%C3%A7alo-laureano-a8b747340/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                  style={{ animationDelay: '0.45s' }}
-                >
-                  <FaLinkedin size={28} />
-                </a>
-              </div>
+              <>
+                <div className="cta-row desktop-socials">
+                  <a
+                    className="cta-button fade-in"
+                    href="https://github.com/gllp2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    More About Me
+                  </a>
+                  <a
+                    className="social-btn pop-in"
+                    href="https://github.com/gllp2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                    style={{ animationDelay: '0.3s' }}
+                  >
+                    <FaGithub size={28} />
+                  </a>
+                  <a
+                    className="social-btn pop-in"
+                    href="https://www.linkedin.com/in/goncalo-laureano/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    style={{ animationDelay: '0.45s' }}
+                  >
+                    <FaLinkedin size={28} />
+                  </a>
+                </div>
+                <div className="socials-row mobile-socials">
+                  <a
+                    className="social-btn pop-in"
+                    href="https://github.com/gllp2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                    style={{ animationDelay: '0.3s' }}
+                  >
+                    <FaGithub size={28} />
+                  </a>
+                  <a
+                    className="social-btn pop-in"
+                    href="https://www.linkedin.com/in/goncalo-laureano/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    style={{ animationDelay: '0.45s' }}
+                  >
+                    <FaLinkedin size={28} />
+                  </a>
+                </div>
+              </>
             )}
           </div>
           <div className="image-container">
