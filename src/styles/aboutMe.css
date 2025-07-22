@@ -1,0 +1,139 @@
+body {
+    background-color: #232222;
+}
+.about-me-section {
+    max-width: 800px;
+    margin: 4rem auto 0 auto;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 2.5rem 2rem;
+    color: #fff;
+    transition: box-shadow 0.3s, background 0.3s, border-radius 0.3s;
+}
+
+.about-me-section:hover {
+    box-shadow: none;
+}
+
+.about-me-section h1 {
+    font-size: 2.7rem;
+    font-weight: 700;
+    color: #00fff7;
+    margin-bottom: 1.5rem;
+    text-shadow:
+        0 0 3px #00fff7,
+        0 0 6px #484FCC,
+        0 2px 8px rgba(0,255,247,0.10),
+        0 1px 2px rgba(72,79,204,0.08);
+    letter-spacing: 0.04em;
+}
+
+.about-me-content {
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: #e0e0e0;
+    margin-top: 0.5rem;
+}
+
+.about-me-content p {
+    margin-bottom: 1.2rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.10);
+}
+
+.line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, #00fff7 0%, #484FCC 100%);
+    opacity: 0.5;
+    transition: max-width 0.6s cubic-bezier(0.4,0,0.2,1);
+    max-width: 100%;
+}
+
+.line.split {
+    max-width: 40%;
+}
+
+.about-me-title-reveal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    margin-bottom: 2.5rem;
+    padding: 0 2vw;
+    box-sizing: border-box;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.about-me-title-center {
+    margin: 0 1.2rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #00fff7;
+    text-shadow:
+        0 0 3px #00fff7,
+        0 0 6px #484FCC,
+        0 2px 8px rgba(0,255,247,0.10),
+        0 1px 2px rgba(72,79,204,0.08);
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.5s 0.3s, transform 0.5s 0.3s;
+}
+
+.about-me-title-reveal.visible .line {
+    max-width: 40%;
+}
+.about-me-title-reveal.visible .about-me-title-center {
+    opacity: 1;
+    transform: scale(1);
+}
+
+@media (max-width: 900px) {
+    .about-me-section {
+        background: rgba(36, 29, 66, 0.95);
+        border-radius: 18px;
+        box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+        padding: 1.5rem 1rem;
+        margin: 2rem auto 0 auto;
+        max-width: 600px;
+        width: 100%;
+    }
+    .about-me-title-center {
+        font-size: 1.7rem;
+    }
+    .about-me-title-reveal {
+        margin-bottom: 2rem;
+        padding: 0 1vw;
+    }
+    .about-me-content {
+        font-size: 1.05rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-me-section {
+        padding: 1.2rem 20px;
+        margin: 1.2rem auto 0 auto;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .about-me-title-center {
+        font-size: 1.2rem;
+    }
+    .about-me-title-reveal {
+        margin-bottom: 1.5rem;
+        padding: 0 5vw;
+    }
+    .about-me-content {
+        font-size: 0.98rem;
+    }
+}
+
+/* Stretch title lines for desktop */
+@media (min-width: 901px) {
+    .about-me-title-reveal .line.split {
+        max-width: 40%;
+    }
+}

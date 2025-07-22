@@ -47,7 +47,7 @@ export default function Technologies() {
     <section className="technologies-section" ref={sectionRef}>
       <div className={`technologies-title-reveal${visible ? ' visible' : ''}`}>
         <div className="line split"></div>
-        <span className="technologies-title-center">Technologies</span>
+        <span className="technologies-title-center">What I'm working with</span>
         <div className="line split"></div>
       </div>
       <div className="technologies-list">

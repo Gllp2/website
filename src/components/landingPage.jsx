@@ -27,13 +27,21 @@ export default function LandingPage() {
     return () => clearTimeout(timeoutId);
   }, []);
 
+  const handleScrollToAbout = (e) => {
+    e.preventDefault();
+    const aboutSection = document.getElementById('about-me');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <>
       <div className="container">
         <div className="main-content">
           <div className="content">
             <div className="subhead-upper-title">
-              I'm Gonçalo Laureano, a
+              Hello, I'm Gonçalo! a
             </div>
             <div className="title">
               <span className="highlight">{typedTitle.slice(0, highlightLength)}</span>{typedTitle.slice(highlightLength)}
@@ -41,16 +49,15 @@ export default function LandingPage() {
             </div>
             {showButton && (
               <>
-                {/* Desktop: all in one row */}
+                {}
                 <div className="cta-row desktop-socials">
-                  <a
+                  <button
                     className="cta-button fade-in"
-                    href=""
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    onClick={handleScrollToAbout}
                   >
                     More About Me
-                  </a>
+                  </button>
+                  
                   <a
                     className="social-btn pop-in"
                     href="https://github.com/gllp2"
@@ -75,14 +82,12 @@ export default function LandingPage() {
                 {/* Mobile: button, then socials below */}
                 <div className="mobile-socials">
                   <div className="cta-row">
-                    <a
+                    <button
                       className="cta-button fade-in"
-                      href="https://github.com/gllp2"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      onClick={handleScrollToAbout}
                     >
                       More About Me
-                    </a>
+                    </button>
                   </div>
                   <div className="socials-row">
                     <a

@@ -1,7 +1,9 @@
 import './App.css';
-import UnderConstruction from './components/underConstruction';
+
 import LandingPage from './components/landingPage';
 import Technologies from './components/technologies';
+import AboutMe from './components/aboutMe';
+import ContactForm from './components/contactMe';
 
 function App() {
   return (
@@ -10,10 +12,13 @@ function App() {
         <LandingPage />
       </div>
       <div className="snap-section">
+        <AboutMe />
+      </div>
+      <div className="snap-section">
         <Technologies />
       </div>
       <div className="snap-section">
-        <UnderConstruction />
+        <ContactForm />
       </div>
     </div>
   );
