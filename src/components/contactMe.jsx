@@ -3,7 +3,7 @@ import emailjs from 'emailjs-com';
 import '../styles/contactMe.css';
 import ReCAPTCHA from 'react-google-recaptcha';
 
-const RECAPTCHA_SITE_KEY = '6Lf5qYsrAAAAAGjXogKRUn8Z-ECgJfFZ761U-lUR';
+const RECAPTCHA_SITE_KEY = '';
 
 const ContactForm = () => {
   const form = useRef();
@@ -40,10 +40,10 @@ const ContactForm = () => {
 
     emailjs
       .sendForm(
-        'service_8qor50s',
-        'template_on75v1f',
+        '',
+        '',
         form.current,
-        '6VjoVtj8x_a3lsGSE'
+        ''
       )
       .then(() => {
         console.log('Contact message sent');
@@ -54,10 +54,10 @@ const ContactForm = () => {
 
     emailjs
       .sendForm(
-        'service_8qor50s',
-        'template_l8ppt9w',
+        '',
+        '',
         form.current,
-        '6VjoVtj8x_a3lsGSE'
+        ''
       )
       .then(() => {
         alert('✅ Message sent! Thank you for contacting me.');
