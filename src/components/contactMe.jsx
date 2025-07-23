@@ -3,7 +3,8 @@ import emailjs from 'emailjs-com';
 import '../styles/contactMe.css';
 import ReCAPTCHA from 'react-google-recaptcha';
 
-const RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY;
+const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
 
 const ContactForm = () => {
   const form = useRef();
