@@ -15,6 +15,14 @@ const ContactForm = () => {
   const [recaptchaValue, setRecaptchaValue] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  if (!RECAPTCHA_SITE_KEY) {
+    return <div style={{ color: 'red', padding: 20 }}>
+      Error: Missing reCAPTCHA site key environment variable.<br />
+      Please set NEXT_PUBLIC_RECAPTCHA_SITE_KEY.
+    </div>;
+  }
+  
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
