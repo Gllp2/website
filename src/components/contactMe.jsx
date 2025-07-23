@@ -3,11 +3,7 @@ import emailjs from 'emailjs-com';
 import ReCAPTCHA from 'react-google-recaptcha';
 import '../styles/contactMe.css';
 
-// Make sure to set these in your .env file
-// REACT_APP_EMAILJS_SERVICE_ID=your_service_id
-// REACT_APP_EMAILJS_TEMPLATE_ID_MAIN=your_template_id
-// REACT_APP_EMAILJS_USER_ID=your_user_id
-// REACT_APP_RECAPTCHA_SITE_KEY=your_recaptcha_site_key
+
 
 const RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY;
 const EMAILJS_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
@@ -47,7 +43,6 @@ const ContactForm = () => {
 
     setLoading(true);
 
-    console.log("About to send email with:", EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_USER_ID);
     emailjs.sendForm(
       EMAILJS_SERVICE_ID,
       EMAILJS_TEMPLATE_ID,
