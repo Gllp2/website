@@ -62,9 +62,7 @@ body {
     margin-bottom: 2.5rem;
     padding: 0 2vw;
     box-sizing: border-box;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    max-width: none;
 }
 
 .about-me-title-center {
@@ -104,7 +102,7 @@ body {
         font-size: 1.7rem;
     }
     .about-me-title-reveal {
-        margin-bottom: 2rem;
+        margin-bottom: 1.2rem;
         padding: 0 1vw;
     }
     .about-me-content {
@@ -120,11 +118,11 @@ body {
         box-sizing: border-box;
     }
     .about-me-title-center {
-        font-size: 1.2rem;
+        font-size: 2rem;
     }
     .about-me-title-reveal {
-        margin-bottom: 1.5rem;
-        padding: 0 5vw;
+        margin-bottom: 1.2rem;
+        padding: 0 0.5vw;
     }
     .about-me-content {
         font-size: 0.98rem;

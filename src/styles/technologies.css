@@ -34,12 +34,15 @@ body {
 }
 
 .technologies-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2.5rem;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, auto);
+    gap: 0.7rem;
+    justify-items: center;
     align-items: center;
-    width: 100vw;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
     box-sizing: border-box;
     padding: 0 2vw;
 }
@@ -117,6 +120,7 @@ body {
     margin-bottom: 2.5rem;
     padding: 0 2vw;
     box-sizing: border-box;
+    max-width: none;
 }
 
 .line {
@@ -126,10 +130,32 @@ body {
     opacity: 0.5;
     transition: max-width 0.6s cubic-bezier(0.4,0,0.2,1);
     max-width: 100%;
+    min-width: 40px;
 }
-
 .line.split {
     max-width: 40%;
+}
+.technologies-title-reveal.visible .line {
+    max-width: 40%;
+}
+@media (max-width: 900px) {
+    .line.split {
+        max-width: 80%;
+    }
+    .technologies-title-reveal.visible .line {
+        max-width: 80%;
+    }
+}
+@media (max-width: 600px) {
+    .line.split {
+        max-width: 99vw;
+    }
+    .technologies-title-reveal.visible .line {
+        max-width: 99vw;
+    }
+    .technologies-title-center {
+        font-size: 2rem !important;
+    }
 }
 
 .technologies-title-center {
@@ -147,62 +173,7 @@ body {
     transition: opacity 0.5s 0.3s, transform 0.5s 0.3s;
 }
 
-.technologies-title-reveal.visible .line {
-    max-width: 40%;
-}
 .technologies-title-reveal.visible .technologies-title-center {
     opacity: 1;
     transform: scale(1);
-}
-
-@media (max-width: 900px) {
-    .technologies-section {
-        padding: 1.2rem 0;
-    }
-    .technologies-title-center {
-        font-size: 1.7rem;
-    }
-    .technologies-list {
-        gap: 1.2rem;
-        padding: 0 1vw;
-    }
-    .technologies-item {
-        padding: 0.7rem 1rem;
-        min-width: 70px;
-        max-width: 90px;
-    }
-    .tech-icon {
-        font-size: 32px !important;
-    }
-    .tech-label {
-        font-size: 0.95rem;
-    }
-}
-
-@media (max-width: 600px) {
-    .technologies-section {
-        padding: 0.7rem 0;
-    }
-    .technologies-title-center {
-        font-size: 1.2rem;
-    }
-    .technologies-title-reveal {
-        margin-bottom: 1.2rem;
-        padding: 0 1vw;
-    }
-    .technologies-list {
-        gap: 0.7rem;
-        padding: 0 0.5vw;
-    }
-    .technologies-item {
-        padding: 0.5rem 0.5rem;
-        min-width: 54px;
-        max-width: 70px;
-    }
-    .tech-icon {
-        font-size: 22px !important;
-    }
-    .tech-label {
-        font-size: 0.8rem;
-    }
 }

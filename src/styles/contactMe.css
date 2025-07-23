@@ -3,16 +3,26 @@
     flex-direction: column;
     align-items: center;
     gap: 1.2rem;
-    background: rgba(36, 29, 66, 0.55);
-    border-radius: 2rem;
+    background: none;
+    border-radius: 0;
     padding: 3.5rem 2.5rem 2.5rem 2.5rem;
     max-width: 800px;
     min-width: 400px;
     margin: 3.5rem auto 2.5rem auto;
-    box-shadow: 0 8px 40px 0 rgba(72, 79, 204, 0.28), 0 1.5px 8px 0 rgba(0,0,0,0.18);
+    box-shadow: none;
     color: #fff;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+@media (max-width: 900px) {
+    .contact-form {
+        background: rgba(36, 29, 66, 0.55);
+        border-radius: 2rem;
+        box-shadow: 0 8px 40px 0 rgba(72, 79, 204, 0.28), 0 1.5px 8px 0 rgba(0,0,0,0.18);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+    }
 }
 
 .fade-in-contact {
@@ -28,11 +38,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto 2.2rem auto;
-    padding: 0;
+    width: 100vw;
+    margin-bottom: 2.5rem;
+    padding: 0 2vw;
     box-sizing: border-box;
+    max-width: none;
 }
 
 .contact-title-center {
@@ -110,6 +120,47 @@
     box-shadow: 0 4px 24px 0 rgba(72, 79, 204, 0.18);
 }
 
+/* Animated line styles from technologies.css */
+.line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, #00fff7 0%, #484FCC 100%);
+    opacity: 0.5;
+    transition: max-width 0.6s cubic-bezier(0.4,0,0.2,1);
+    max-width: 100%;
+}
+.line.split {
+    max-width: 40%;
+}
+.contact-title-reveal.visible .line {
+    max-width: 40%;
+}
+
+@media (max-width: 900px) {
+    .contact-title-reveal {
+        margin-bottom: 1.2rem;
+        padding: 0 1vw;
+    }
+    .line.split {
+        max-width: 80%;
+    }
+    .contact-title-reveal.visible .line {
+        max-width: 80%;
+    }
+}
+@media (max-width: 600px) {
+    .contact-title-reveal {
+        margin-bottom: 1.2rem;
+        padding: 0 0.5vw;
+    }
+    .line.split {
+        max-width: 99vw;
+    }
+    .contact-title-reveal.visible .line {
+        max-width: 99vw;
+    }
+}
+
 @media (max-width: 1100px) {
     .contact-form {
         max-width: 98vw;
@@ -120,7 +171,7 @@
         max-width: 98vw;
     }
     .contact-title-center {
-        font-size: 1.7rem;
+        font-size: 2.7rem;
     }
     .contact-cta-button {
         font-size: 1.15rem;
@@ -142,7 +193,7 @@
         max-width: 99vw;
     }
     .contact-title-center {
-        font-size: 2.15rem;
+        font-size: 2rem;
     }
     .contact-cta-button {
         font-size: 0.98rem;

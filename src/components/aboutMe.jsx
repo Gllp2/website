@@ -20,6 +20,14 @@ export default function AboutMe() {
         return () => observer.disconnect();
     }, []);
 
+    const handleScrollToContact = (e) => {
+        e.preventDefault();
+        const contactSection = document.getElementById('contact-me');
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <>
             <div className={`about-me-title-reveal${visible ? ' visible' : ''}`}>
@@ -34,9 +42,13 @@ export default function AboutMe() {
                     <p>Let’s connect and make something awesome together!</p>
                 </div>
             </section>
-                <a className="cta-button fade-in" href="/contact" style={{ display: 'block', width: 'fit-content', margin: '2rem auto 0 auto', textAlign: 'center' }}>
+                <button
+                    className="cta-button fade-in"
+                    style={{ display: 'block', width: 'fit-content', margin: '2rem auto 0 auto', textAlign: 'center' }}
+                    onClick={handleScrollToContact}
+                >
                     Contact Me
-                </a>
+                </button>
             
         </>
     );

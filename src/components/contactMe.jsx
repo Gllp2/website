@@ -22,6 +22,8 @@ const ContactForm = () => {
   const [visible, setVisible] = useState(false);
   const [recaptchaValue, setRecaptchaValue] = useState(null);
   const [loading, setLoading] = useState(false);
+  const titleRef = useRef(null);
+  const [titleVisible, setTitleVisible] = useState(false);
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -37,6 +39,23 @@ const ContactForm = () => {
       observer.observe(form.current);
     }
     return () => observer.disconnect();
+  }, []);
+
+  React.useEffect(() => {
+    // Title observer for animation
+    const titleObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTitleVisible(true);
+          titleObserver.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    if (titleRef.current) {
+      titleObserver.observe(titleRef.current);
+    }
+    return () => titleObserver.disconnect();
   }, []);
 
   const sendEmail = async (e) => {
@@ -102,13 +121,14 @@ const ContactForm = () => {
       ) : (
         <form
           ref={form}
+          id="contact-me"
           onSubmit={sendEmail}
           className={`contact-form fade-in-contact${visible ? " visible" : ""}`}
         >
-          <div className="contact-title-reveal">
-            <div className="contact-line split"></div>
+          <div ref={titleRef} className={`contact-title-reveal${titleVisible ? ' visible' : ''}`}>
+            <div className="line split"></div>
             <span className="contact-title-center">Contact Me</span>
-            <div className="contact-line split"></div>
+            <div className="line split"></div>
           </div>
           <input
             type="text"
