@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import '../styles/contactMe.css';
 
-const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+const RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY;
 
 
 const ContactForm = () => {
