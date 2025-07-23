@@ -5,6 +5,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 
 const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
+
 console.log("RECAPTCHA_SITE_KEY =", RECAPTCHA_SITE_KEY);
 
 const ContactForm = () => {
