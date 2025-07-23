@@ -57,8 +57,12 @@ const ContactForm = () => {
     )
     .then(
       (result) => {
-        // Send confirmation email to the sender
+        // Debug: log form data before sending confirmation
         if (EMAILJS_TEMPLATE_ID_REPLY) {
+          const formData = new FormData(form.current);
+          for (let [key, value] of formData.entries()) {
+            console.log(`Form field: ${key} = ${value}`);
+          }
           emailjs.sendForm(
             EMAILJS_SERVICE_ID,
             EMAILJS_TEMPLATE_ID_REPLY,
