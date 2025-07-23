@@ -42,6 +42,12 @@ const ContactForm = () => {
   const sendEmail = async (e) => {
     e.preventDefault();
 
+    // Extract form data immediately
+    const formData = new FormData(form.current);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const message = formData.get('message');
+
     if (!recaptchaValue) {
       alert("Please verify that you are not a robot.");
       return;
@@ -57,13 +63,7 @@ const ContactForm = () => {
     )
     .then(
       (result) => {
-        // Extract form data before resetting the form
-        const formData = new FormData(form.current);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const message = formData.get('message');
-
-        // Send confirmation email to the sender using emailjs.send
+        // Use the previously extracted values here
         if (EMAILJS_TEMPLATE_ID_REPLY) {
           emailjs.send(
             EMAILJS_SERVICE_ID,
@@ -71,9 +71,7 @@ const ContactForm = () => {
             { name, email, message },
             EMAILJS_USER_ID
           ).then(
-            () => {
-              // Optionally notify the user that a confirmation was sent
-            },
+            () => {},
             (error) => {
               console.error("Confirmation email error:", error);
             }
