@@ -3,11 +3,17 @@ import emailjs from 'emailjs-com';
 import ReCAPTCHA from 'react-google-recaptcha';
 import '../styles/contactMe.css';
 
-
+// Make sure to set these in your .env file
+// REACT_APP_EMAILJS_SERVICE_ID=your_service_id
+// REACT_APP_EMAILJS_TEMPLATE_ID_MAIN=your_template_id
+// REACT_APP_EMAILJS_TEMPLATE_ID_REPLY=your_reply_template_id
+// REACT_APP_EMAILJS_USER_ID=your_user_id
+// REACT_APP_RECAPTCHA_SITE_KEY=your_recaptcha_site_key
 
 const RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY;
 const EMAILJS_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID_MAIN;
+const EMAILJS_TEMPLATE_ID_REPLY = process.env.REACT_APP_EMAILJS_TEMPLATE_ID_REPLY;
 const EMAILJS_USER_ID = process.env.REACT_APP_EMAILJS_USER_ID;
 
 const ContactForm = () => {
@@ -43,6 +49,7 @@ const ContactForm = () => {
 
     setLoading(true);
 
+    console.log("About to send email with:", EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_USER_ID);
     emailjs.sendForm(
       EMAILJS_SERVICE_ID,
       EMAILJS_TEMPLATE_ID,
@@ -51,6 +58,15 @@ const ContactForm = () => {
     )
     .then(
       (result) => {
+        // Send confirmation email to the sender
+        if (EMAILJS_TEMPLATE_ID_REPLY) {
+          emailjs.sendForm(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID_REPLY,
+            form.current,
+            EMAILJS_USER_ID
+          );
+        }
         alert("✅ Message sent! Thank you for contacting me.");
         e.target.reset();
         setRecaptchaValue(null);
@@ -64,6 +80,7 @@ const ContactForm = () => {
   };
 
   // Debug: Log the site key to ensure it's loaded
+  console.log("RECAPTCHA_SITE_KEY =", RECAPTCHA_SITE_KEY);
 
   return (
     <div>
