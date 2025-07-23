@@ -1,5 +1,3 @@
-// /pages/api/contact.js
-
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, error: 'Method not allowed' });
@@ -7,22 +5,32 @@ export default async function handler(req, res) {
 
   const { name, email, message, recaptcha } = req.body;
 
+  console.log("Incoming request body:", req.body);
+
   // Validate required fields
-  if (!name || !email || !message || !recaptcha) {
-    return res.status(400).json({ success: false, error: 'Missing required fields' });
+  const missingFields = [];
+  if (!name) missingFields.push("name");
+  if (!email) missingFields.push("email");
+  if (!message) missingFields.push("message");
+  if (!recaptcha) missingFields.push("recaptcha");
+
+  if (missingFields.length > 0) {
+    console.warn("Missing fields:", missingFields);
+    return res.status(400).json({
+      success: false,
+      error: `Missing required fields: ${missingFields.join(', ')}`,
+    });
   }
 
   try {
     // 1. Verify reCAPTCHA
     const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
-    const recaptchaVerify = await fetch(
-      `https://www.google.com/recaptcha/api/siteverify`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `secret=${recaptchaSecret}&response=${recaptcha}`,
-      }
-    );
+    const recaptchaVerify = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `secret=${recaptchaSecret}&response=${recaptcha}`,
+    });
+
     const recaptchaJson = await recaptchaVerify.json();
     console.log('reCAPTCHA verification response:', recaptchaJson);
 
@@ -30,7 +38,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ success: false, error: 'reCAPTCHA verification failed' });
     }
 
-    // 2. Send email using EmailJS REST API
+    // 2. Send email using EmailJS
     const emailjsServiceId = process.env.EMAILJS_SERVICE_ID;
     const emailjsTemplateId = process.env.EMAILJS_TEMPLATE_ID_MAIN;
     const emailjsUserId = process.env.EMAILJS_USER_ID;
