@@ -3,7 +3,7 @@ import emailjs from 'emailjs-com';
 import '../styles/contactMe.css';
 import ReCAPTCHA from 'react-google-recaptcha';
 
-const RECAPTCHA_SITE_KEY = '';
+const RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY;
 
 const ContactForm = () => {
   const form = useRef();
@@ -28,7 +28,7 @@ const ContactForm = () => {
     return () => observer.disconnect();
   }, []);
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
 
     if (!recaptchaValue) {
@@ -38,42 +38,39 @@ const ContactForm = () => {
 
     setLoading(true);
 
-    emailjs
-      .sendForm(
-        '',
-        '',
-        form.current,
-        ''
-      )
-      .then(() => {
-        console.log('Contact message sent');
-      })
-      .catch((error) => {
-        console.error('EmailJS contact error:', error);
+    const formData = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      message: e.target.message.value,
+      recaptcha: recaptchaValue,
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
 
-    emailjs
-      .sendForm(
-        '',
-        '',
-        form.current,
-        ''
-      )
-      .then(() => {
+      const result = await response.json();
+
+      if (result.success) {
         alert('✅ Message sent! Thank you for contacting me.');
-      })
-      .catch((error) => {
-        console.error('EmailJS auto-reply error:', error);
-        alert('❌ Oops! Something went wrong. Please try again.');
-      })
-      .finally(() => {
-        setLoading(false);
         e.target.reset();
         setRecaptchaValue(null);
         recaptchaRef.current.reset();
-      });
+      } else {
+        alert('❌ Oops! Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      alert('❌ Oops! Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
+  // Debug: Log the site key to ensure it's loaded
+  console.log('RECAPTCHA_SITE_KEY:', RECAPTCHA_SITE_KEY);
   return (
     <div>
       <form
