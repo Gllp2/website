@@ -49,7 +49,6 @@ const ContactForm = () => {
 
     setLoading(true);
 
-    console.log("About to send email with:", EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_USER_ID);
     emailjs.sendForm(
       EMAILJS_SERVICE_ID,
       EMAILJS_TEMPLATE_ID,
