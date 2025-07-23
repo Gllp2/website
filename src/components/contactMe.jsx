@@ -57,17 +57,21 @@ const ContactForm = () => {
     )
     .then(
       (result) => {
-        // Debug: log form data before sending confirmation
+        // Send confirmation email to the sender BEFORE resetting the form
         if (EMAILJS_TEMPLATE_ID_REPLY) {
-          const formData = new FormData(form.current);
-          for (let [key, value] of formData.entries()) {
-            console.log(`Form field: ${key} = ${value}`);
-          }
           emailjs.sendForm(
             EMAILJS_SERVICE_ID,
             EMAILJS_TEMPLATE_ID_REPLY,
             form.current,
             EMAILJS_USER_ID
+          ).then(
+            () => {
+              // Optionally, you can notify the user that a confirmation was sent
+            },
+            (error) => {
+              // Optionally, handle error for confirmation email
+              console.error("Confirmation email error:", error);
+            }
           );
         }
         alert("✅ Message sent! Thank you for contacting me.");
