@@ -70,7 +70,6 @@ const ContactForm = () => {
   };
 
   // Debug: Log the site key to ensure it's loaded
-  console.log('RECAPTCHA_SITE_KEY:', RECAPTCHA_SITE_KEY);
   return (
     <div>
       <form
