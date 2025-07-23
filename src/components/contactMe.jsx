@@ -1,9 +1,18 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
+import emailjs from 'emailjs-com';
 import ReCAPTCHA from 'react-google-recaptcha';
 import '../styles/contactMe.css';
 
-const RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY;
+// Make sure to set these in your .env file
+// REACT_APP_EMAILJS_SERVICE_ID=your_service_id
+// REACT_APP_EMAILJS_TEMPLATE_ID_MAIN=your_template_id
+// REACT_APP_EMAILJS_USER_ID=your_user_id
+// REACT_APP_RECAPTCHA_SITE_KEY=your_recaptcha_site_key
 
+const RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY;
+const EMAILJS_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID_MAIN;
+const EMAILJS_USER_ID = process.env.REACT_APP_EMAILJS_USER_ID;
 
 const ContactForm = () => {
   const form = useRef();
@@ -12,7 +21,7 @@ const ContactForm = () => {
   const [recaptchaValue, setRecaptchaValue] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -38,39 +47,25 @@ const ContactForm = () => {
 
     setLoading(true);
 
-    const formData = {
-      name: e.target.name.value,
-      email: e.target.email.value,
-      message: e.target.message.value,
-      recaptcha: recaptchaValue,
-    };
-
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
+    emailjs.sendForm(
+      EMAILJS_SERVICE_ID,
+      EMAILJS_TEMPLATE_ID,
+      form.current,
+      EMAILJS_USER_ID
+    )
+    .then(
+      (result) => {
         alert("✅ Message sent! Thank you for contacting me.");
         e.target.reset();
         setRecaptchaValue(null);
         recaptchaRef.current.reset();
-      } else {
+      },
+      (error) => {
         alert("❌ Oops! Something went wrong. Please try again.");
       }
-    } catch (error) {
-      alert("❌ Oops! Something went wrong. Please try again.");
-    } finally {
-      setLoading(false);
-    }
+    )
+    .finally(() => setLoading(false));
   };
-  useEffect(() => {
-    console.log('RECAPTCHA_SITE_KEY:', process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY);
-  }, []);
 
   // Debug: Log the site key to ensure it's loaded
   console.log("RECAPTCHA_SITE_KEY =", RECAPTCHA_SITE_KEY);
@@ -81,7 +76,7 @@ const ContactForm = () => {
         <div style={{ color: "red", padding: 20 }}>
           Error: Missing reCAPTCHA site key environment variable.
           <br />
-          Please set NEXT_PUBLIC_RECAPTCHA_SITE_KEY.
+          Please set REACT_APP_RECAPTCHA_SITE_KEY.
         </div>
       ) : (
         <form
@@ -121,7 +116,7 @@ const ContactForm = () => {
 
           <ReCAPTCHA
             sitekey={RECAPTCHA_SITE_KEY}
-            onChange={(value) => setRecaptchaValue(value)}
+            onChange={setRecaptchaValue}
             ref={recaptchaRef}
             style={{ margin: "20px 0" }}
           />
@@ -140,3 +135,4 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+
