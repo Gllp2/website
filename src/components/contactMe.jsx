@@ -67,6 +67,9 @@ const ContactForm = () => {
       setLoading(false);
     }
   };
+  useEffect(() => {
+    console.log('RECAPTCHA_SITE_KEY:', process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY);
+  }, []);
 
   // Debug: Log the site key to ensure it's loaded
   console.log("RECAPTCHA_SITE_KEY =", RECAPTCHA_SITE_KEY);
