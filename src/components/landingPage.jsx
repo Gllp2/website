@@ -79,7 +79,7 @@ export default function LandingPage() {
                     <FaLinkedin size={28} />
                   </a>
                 </div>
-                {/* Mobile: button, then socials below */}
+                
                 <div className="mobile-socials">
                   <div className="cta-row">
                     <button

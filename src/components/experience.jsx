@@ -22,7 +22,6 @@ function useTypewriter(text, active, speed = 30) {
   useEffect(() => {
     if (!active || typeof text !== 'string') return;
     
-    // Clean the text to remove any potential undefined characters or encoding issues
     const cleanText = text.toString().replace(/undefined/g, '').trim();
     
     setDisplayed('');
@@ -43,7 +42,6 @@ function useTypewriter(text, active, speed = 30) {
 function TimelineBranch({ entry, idx, branchVisible, textVisible, trunkHeight, branchSpacing }) {
   const isLeft = entry.side === 'left';
   const top = (idx + 1) * branchSpacing;
-  // Temporarily disable typewriter to fix text corruption
   const title = entry.title || '';
   const companyOrSchool = isLeft ? (entry.company || '') : (entry.school || '');
   const date = entry.date || '';
