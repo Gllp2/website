@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaFileAlt } from 'react-icons/fa';
 import '../styles/landingPage.css';
 
 export default function LandingPage() {
@@ -35,6 +35,15 @@ export default function LandingPage() {
     }
   };
 
+  const handleDownloadCV = () => {
+    const link = document.createElement('a');
+    link.href = process.env.PUBLIC_URL + '/GoncaloL.pdf';
+    link.download = 'GoncaloL.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <>
       <div className="container">
@@ -51,12 +60,23 @@ export default function LandingPage() {
               <>
                 {}
                 <div className="cta-row desktop-socials">
-                  <button
-                    className="cta-button fade-in"
-                    onClick={handleScrollToAbout}
-                  >
-                    More About Me
-                  </button>
+                  <div className="button-column">
+                    <button
+                      className="cta-button fade-in"
+                      onClick={handleScrollToAbout}
+                    >
+                      More About Me
+                    </button>
+                    
+                    <button
+                      className="download-cv-button fade-in"
+                      onClick={handleDownloadCV}
+                      style={{ animationDelay: '0.15s' }}
+                    >
+                      <FaFileAlt size={16} />
+                      Download CV
+                    </button>
+                  </div>
                   
                   <a
                     className="social-btn pop-in"
@@ -81,12 +101,21 @@ export default function LandingPage() {
                 </div>
                 
                 <div className="mobile-socials">
-                  <div className="cta-row">
+                  <div className="button-column">
                     <button
                       className="cta-button fade-in"
                       onClick={handleScrollToAbout}
                     >
                       More About Me
+                    </button>
+                    
+                    <button
+                      className="download-cv-button fade-in"
+                      onClick={handleDownloadCV}
+                      style={{ animationDelay: '0.15s' }}
+                    >
+                      <FaFileAlt size={16} />
+                      Download CV
                     </button>
                   </div>
                   <div className="socials-row">
