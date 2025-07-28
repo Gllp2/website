@@ -1,0 +1,94 @@
+body {
+    background-color: #232222;
+}
+
+/* --- Absolute Positioning Timeline Styles (Experience) --- */
+.timeline-abs-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 3rem auto 2rem auto;
+  min-height: 350px;
+}
+.timeline-trunk-abs {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #00fff7 0%, #484FCC 100%);
+  transform: translateX(-50%);
+  border-radius: 2px;
+  z-index: 1;
+  transition: height 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+.timeline-branch-abs {
+  position: absolute;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+.timeline-branch-abs.left {
+  left: 0;
+  width: 50%;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  text-align: right;
+}
+.timeline-branch-abs.right {
+  right: 0;
+  width: 50%;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-align: left;
+}
+.timeline-branch-abs-line {
+  height: 4px;
+  width: 0;
+  background: linear-gradient(90deg, #00fff7 0%, #484FCC 100%);
+  border-radius: 2px;
+  opacity: 0;
+  transition: width 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.2s;
+}
+.timeline-branch-abs.left .timeline-branch-abs-line {
+  margin-right: 0.7rem;
+}
+.timeline-branch-abs.right .timeline-branch-abs-line {
+  margin-left: 0.7rem;
+  background: linear-gradient(270deg, #00fff7 0%, #484FCC 100%);
+}
+.branch-animate {
+  width: 60px;
+  opacity: 1;
+}
+.timeline-content.no-bg {
+  background: none;
+  box-shadow: none;
+  padding: 0.5rem 0.5rem;
+  margin: 0 1rem;
+}
+.timeline-branch-abs.left .timeline-content.no-bg {
+  margin-left: auto;
+  margin-right: 0.7rem;
+  text-align: right;
+}
+.timeline-branch-abs.right .timeline-content.no-bg {
+  margin-right: 0;
+  margin-left: 0.7rem;
+  text-align: left;
+}
+@media (max-width: 900px) {
+  .timeline-abs-container {
+    max-width: 99vw;
+    min-height: 300px;
+  }
+  .branch-animate {
+    width: 32px;
+  }
+}
+@media (max-width: 600px) {
+  .branch-animate {
+    width: 16px;
+  }
+} 
