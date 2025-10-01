@@ -29,11 +29,7 @@ export default function Projects() {
                 <div className="line split"></div>
             </div>
             <div style={{ color: '#fff', textAlign: 'center', marginTop: '2rem' }}>
-                <p>Project Name</p>
-                <p>Short description of the project, technologies used, and a link if available.</p>
-                <hr style={{ margin: '2rem 0', opacity: 0.2 }} />
-                <p>Another Project</p>
-                <p>Short description of the project, technologies used, and a link if available.</p>
+                <p>Under Construction</p>
             </div>
         </section>
     );
