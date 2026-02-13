@@ -126,7 +126,7 @@ const ContactForm = () => {
             required
             className="contact-input"
             disabled={loading}
-            maxlength="50"
+            maxlength="10"
           />
           <input
             type="email"
@@ -135,12 +135,12 @@ const ContactForm = () => {
             required
             className="contact-input"
             disabled={loading}
-            maxlength="50"
+            maxlength="25"
           />
           <textarea
             name="message"
             rows="5"
-            maxlength="50"
+            maxlength="15"
             placeholder="Your Message"
             required
             className="contact-input"
